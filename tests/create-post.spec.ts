@@ -9,7 +9,7 @@ const extendedTest = test.extend<{ app: ReturnType<typeof App> }>({
   }
 });
 
-extendedTest.describe("Create post suite", () => {
+extendedTest.describe("Create post. Test suite.", () => {
   const formatName = "YYYY-MM-DD_h-mm-ss";
   const postTitle = `sdet-test_${moment().format(formatName)}`;
 
@@ -49,16 +49,9 @@ extendedTest.describe("Create post suite", () => {
   extendedTest.afterAll("Delete post after test", async ({ browser }) => {
     let page = await browser.newPage();
     let app = App(page);
-    await extendedTest.step(`STEP-1: Login to a WP dashboard as ${sdetAdmin.adminName}`, async () => {
-      await app.loginPage.open();
-      await app.loginPage.login(sdetAdmin);
-    });
-
-    await extendedTest.step(`STEP-2: Move post to a trash and check it's not visible anymore`, async () => {
-      await app.wpDashboardPage.openPostsMenu();
-      await app.wpDashboardPage.deletePostByTitle(postTitle);
-    });
-
-    await expect.soft(page.getByRole("cell", { name: postTitle })).not.toBeVisible();
+    await app.loginPage.open();
+    await app.loginPage.login(sdetAdmin);
+    await app.wpDashboardPage.openPostsMenu();
+    await app.wpDashboardPage.deletePostByTitle(postTitle);
   });
 });
