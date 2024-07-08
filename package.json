@@ -1,0 +1,23 @@
+{
+  "name": "wpform_sdet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npx playwright install",
+    "test": "npx playwright test",
+    "report": "npx playwright show-report",
+    "prettier-format": "npx prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.45.1",
+    "@types/node": "^20.14.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "moment": "^2.30.1"
+  }
+}
