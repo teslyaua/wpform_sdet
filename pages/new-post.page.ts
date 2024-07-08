@@ -11,7 +11,7 @@ export const NewPost = (page: Page) => ({
   async addPostInfo(title: string, description: string) {
     await this.editorIframe.getByLabel("Add title").fill(title);
     await this.editorIframe.getByLabel("Add default block").click();
-    await this.editorIframe.getByLabel("Empty block; start writing or").fill(description);
+    await this.editorIframe.locator(`[data-title="Paragraph"]`).fill(description);
   },
 
   async publishPost() {

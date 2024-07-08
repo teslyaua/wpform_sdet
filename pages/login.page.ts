@@ -2,8 +2,8 @@ import { Page } from "@playwright/test";
 import { Admin } from "../models/admins";
 
 export const Login = (page: Page) => ({
-  usernameInput: page.getByLabel("Username or Email Address"),
-  passwordInput: page.getByLabel("Password", { exact: true }),
+  usernameInput: page.locator("#user_login"),
+  passwordInput: page.locator("#user_pass"),
   loginBtn: page.getByRole("button", { name: "Log In" }),
 
   async open() {
